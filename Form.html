@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .radio-group {
+            margin-bottom: 10px;
+        }
+        button {
+            background: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Health Insurance Form</h2>
+        <form id="healthForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br><br>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" required><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required><br><br>
+
+            <label>Do you have health insurance (self/parents)?</label><br>
+            <div class="radio-group">
+                <input type="radio" name="insurance" value="Yes" required> Yes
+                <input type="radio" name="insurance" value="No"> No
+            </div>
+
+            <label>Are you willing to purchase health insurance?</label><br>
+            <div class="radio-group">
+                <input type="radio" name="purchase" value="Yes" required> Yes
+                <input type="radio" name="purchase" value="No"> No
+            </div>
+
+            <label>Have you been hospitalized before?</label><br>
+            <div class="radio-group">
+                <input type="radio" name="hospitalized" value="Yes" required> Yes
+                <input type="radio" name="hospitalized" value="No"> No
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("healthForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let course = document.getElementById("course").value;
+            let age = document.getElementById("age").value;
+            let insurance = document.querySelector('input[name="insurance"]:checked').value;
+            let purchase = document.querySelector('input[name="purchase"]:checked').value;
+            let hospitalized = document.querySelector('input[name="hospitalized"]:checked').value;
+
+            let formData = {
+                Name: name,
+                Course: course,
+                Age: age,
+                HealthInsurance: insurance,
+                WillingToPurchase: purchase,
+                HospitalizedBefore: hospitalized
+            };
+
+            console.log("Collected Data:", formData);
+            alert("Form submitted successfully! Check the console for details.");
+        });
+    </script>
+
+</body>
+</html>
